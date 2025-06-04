@@ -26,8 +26,7 @@ const defaultProducts: Product[] = [
     name: "Nike Air Max 270",
     price: 150,
     category: "men",
-    image:
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
     colorways: 4,
     isNew: true,
   },
@@ -36,8 +35,7 @@ const defaultProducts: Product[] = [
     name: "Nike React Infinity Run",
     price: 160,
     category: "women",
-    image:
-      "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=500&q=80",
+    image: "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=500&q=80",
     colorways: 3,
   },
   {
@@ -45,8 +43,7 @@ const defaultProducts: Product[] = [
     name: "Nike Air Force 1",
     price: 100,
     category: "kids",
-    image:
-      "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=500&q=80",
+    image: "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=500&q=80",
     colorways: 5,
   },
   {
@@ -54,8 +51,7 @@ const defaultProducts: Product[] = [
     name: "Nike ZoomX Vaporfly",
     price: 250,
     category: "men",
-    image:
-      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80",
+    image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80",
     colorways: 2,
     isNew: true,
   },
@@ -64,8 +60,7 @@ const defaultProducts: Product[] = [
     name: "Nike Blazer Mid",
     price: 100,
     category: "women",
-    image:
-      "https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=500&q=80",
+    image: "https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=500&q=80",
     colorways: 6,
   },
   {
@@ -73,8 +68,7 @@ const defaultProducts: Product[] = [
     name: "Nike Air Zoom Pegasus",
     price: 120,
     category: "men",
-    image:
-      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80",
+    image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80",
     colorways: 3,
     isSale: true,
     discount: 15,
@@ -85,8 +79,7 @@ const defaultProducts: Product[] = [
     name: "Nike Joyride Run",
     price: 180,
     category: "women",
-    image:
-      "https://images.unsplash.com/photo-1576672843344-f01907a9d40c?w=500&q=80",
+    image: "https://images.unsplash.com/photo-1576672843344-f01907a9d40c?w=500&q=80",
     colorways: 2,
     isSale: true,
     discount: 10,
@@ -97,17 +90,16 @@ const defaultProducts: Product[] = [
     name: "Nike SB Dunk Low",
     price: 110,
     category: "kids",
-    image:
-      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80",
+    image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80",
     colorways: 4,
   },
 ];
 
-const ProductGrid = ({
+const ProductGrid: React.FC<ProductGridProps> = ({
   products = defaultProducts,
   title = "Featured Products",
   showFilters = true,
-}: ProductGridProps) => {
+}) => {
   const [sortBy, setSortBy] = useState("featured");
   const [filterCategory, setFilterCategory] = useState("all");
 
@@ -121,17 +113,14 @@ const ProductGrid = ({
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sortBy === "price-asc") return a.price - b.price;
     if (sortBy === "price-desc") return b.price - a.price;
-    return 0; // default: featured (no sorting)
+    return 0;
   });
 
-  // Default no-op handlers for example
   const handleQuickView = (productId: string) => {
-    // placeholder for quick view action
     console.log(`Quick view product ${productId}`);
   };
 
   const handleAddToFavorites = (productId: string) => {
-    // placeholder for add to favorites action
     console.log(`Toggle favorite for product ${productId}`);
   };
 
@@ -144,10 +133,7 @@ const ProductGrid = ({
           {showFilters && (
             <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
               <div className="flex items-center">
-                <label
-                  htmlFor="filter"
-                  className="mr-2 text-sm font-medium text-gray-700"
-                >
+                <label htmlFor="filter" className="mr-2 text-sm font-medium text-gray-700">
                   Filter:
                 </label>
                 <select
@@ -166,10 +152,7 @@ const ProductGrid = ({
               </div>
 
               <div className="flex items-center">
-                <label
-                  htmlFor="sort"
-                  className="mr-2 text-sm font-medium text-gray-700"
-                >
+                <label htmlFor="sort" className="mr-2 text-sm font-medium text-gray-700">
                   Sort by:
                 </label>
                 <select
@@ -199,7 +182,6 @@ const ProductGrid = ({
               isNew={product.isNew}
               isSale={product.isSale}
               discount={product.discount}
-              originalPrice={product.originalPrice}
               onQuickView={() => handleQuickView(product.id)}
               onAddToFavorites={() => handleAddToFavorites(product.id)}
             />

@@ -1,5 +1,6 @@
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { Routes, Route, useRoutes } from "react-router-dom";
+
 import Home from "./components/home";
 import CartPage from "./pages/cart";
 import FavoritesPage from "./pages/favorites";
@@ -14,6 +15,7 @@ import CategoryPage from "./pages/category";
 import routes from "tempo-routes";
 
 function App() {
+  // Conditionally use tempo routes if VITE_TEMPO is "true"
   const tempoRoutes = import.meta.env.VITE_TEMPO === "true" ? useRoutes(routes) : null;
 
   return (
@@ -32,6 +34,7 @@ function App() {
           <Route path="/category/:subcategory" element={<CategoryPage />} />
         </Routes>
 
+        {/* Render tempo routes if enabled */}
         {tempoRoutes}
       </>
     </Suspense>
