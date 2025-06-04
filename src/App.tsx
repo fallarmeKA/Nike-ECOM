@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Routes, Route, useRoutes, Link } from "react-router-dom";
+import { Routes, Route, useRoutes } from "react-router-dom";
 import Home from "./components/home";
 import CartPage from "./pages/cart";
 import FavoritesPage from "./pages/favorites";
@@ -10,6 +10,7 @@ import KidsPage from "./pages/kids";
 import SalePage from "./pages/sale";
 import ProductDetail from "./pages/product/[id]";
 import CategoryPage from "./pages/category";
+
 import routes from "tempo-routes";
 
 function App() {
