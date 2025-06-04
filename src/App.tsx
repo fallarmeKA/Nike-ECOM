@@ -1,6 +1,5 @@
 import { Suspense } from "react";
-import { Routes, Route, useRoutes } from "react-router-dom";
-import CategoryPage from "./pages/category";
+import { Routes, Route, useRoutes, Link } from "react-router-dom";
 import Home from "./components/home";
 import CartPage from "./pages/cart";
 import FavoritesPage from "./pages/favorites";
@@ -10,9 +9,12 @@ import WomenPage from "./pages/women";
 import KidsPage from "./pages/kids";
 import SalePage from "./pages/sale";
 import ProductDetail from "./pages/product/[id]";
+import CategoryPage from "./pages/category";
 import routes from "tempo-routes";
 
 function App() {
+  const tempoRoutes = import.meta.env.VITE_TEMPO === "true" ? useRoutes(routes) : null;
+
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <>
@@ -26,17 +28,10 @@ function App() {
           <Route path="/kids" element={<KidsPage />} />
           <Route path="/sale" element={<SalePage />} />
           <Route path="/product/:id" element={<ProductDetail />} />
-
-          {/* ✅ New dynamic subcategory route */}
           <Route path="/category/:subcategory" element={<CategoryPage />} />
         </Routes>
 
-        {/* Conditional Tempo Routes */}
-        {import.meta.env.VITE_TEMPO === "true" && (
-          <Routes>
-            {useRoutes(routes)}
-          </Routes>
-        )}
+        {tempoRoutes}
       </>
     </Suspense>
   );

@@ -5,9 +5,13 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Card, CardContent } from "./ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
+import ProductGrid from "./products/ProductGrid";
 import { Badge } from "./ui/badge";
+import Navbar from "./layout/Navbar";
 
 const Home = () => {
+  const [activeTab, setActiveTab] = React.useState("all");
+
   // Mock data for featured products
   const featuredProducts = [
     // Shoes
@@ -137,263 +141,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation Bar */}
-      <header className="sticky top-0 z-10 bg-white border-b border-gray-200">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            {/* Left Side: Logo */}
-            <div className="flex-shrink-0">
-              <Link to="/">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1200px-Logo_NIKE.svg.png"
-                  alt="Nike Logo"
-                  className="h-6 w-auto"
-                />
-              </Link>
-            </div>
-
-            {/* Center: Navigation Links */}
-            <nav className="hidden md:flex space-x-8 justify-center">
-              <div className="relative group">
-                <button className="flex items-center text-sm font-medium text-gray-900 hover:text-red-600 transition-colors">
-                  New & Featured <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-                <div className="absolute left-0 top-full mt-2 w-48 bg-white shadow-lg rounded-md p-2 hidden group-hover:block z-50">
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Shoes
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Shirts
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Jackets
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Footwear
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Sports Attire
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Lifestyle Attire
-                  </Link>
-                </div>
-              </div>
-              <div className="relative group">
-                <button className="flex items-center text-sm font-medium text-gray-900 hover:text-red-600 transition-colors">
-                  Men <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-                <div className="absolute left-0 top-full mt-2 w-48 bg-white shadow-lg rounded-md p-2 hidden group-hover:block z-50">
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Shoes
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Shirts
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Jackets
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Footwear
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Sports Attire
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Lifestyle Attire
-                  </Link>
-                </div>
-              </div>
-              <div className="relative group">
-                <button className="flex items-center text-sm font-medium text-gray-900 hover:text-red-600 transition-colors">
-                  Women <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-                <div className="absolute left-0 top-full mt-2 w-48 bg-white shadow-lg rounded-md p-2 hidden group-hover:block z-50">
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Shoes
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Shirts
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Jackets
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Footwear
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Sports Attire
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Lifestyle Attire
-                  </Link>
-                </div>
-              </div>
-              <div className="relative group">
-                <button className="flex items-center text-sm font-medium text-gray-900 hover:text-red-600 transition-colors">
-                  Kids <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-                <div className="absolute left-0 top-full mt-2 w-48 bg-white shadow-lg rounded-md p-2 hidden group-hover:block z-50">
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Shoes
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Shirts
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Jackets
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Footwear
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Sports Attire
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Lifestyle Attire
-                  </Link>
-                </div>
-              </div>
-              <div className="relative group">
-                <button className="flex items-center text-sm font-medium text-gray-900 hover:text-red-600 transition-colors">
-                  Sale <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-                <div className="absolute left-0 top-full mt-2 w-48 bg-white shadow-lg rounded-md p-2 hidden group-hover:block z-50">
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Shoes
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Shirts
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Jackets
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Footwear
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Sports Attire
-                  </Link>
-                  <Link
-                    to="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md"
-                  >
-                    Lifestyle Attire
-                  </Link>
-                </div>
-              </div>
-            </nav>
-
-            {/* Right Side: Search, Favorites, Cart */}
-            <div className="flex items-center space-x-4">
-              <div className="hidden md:flex items-center relative">
-                <Input
-                  type="text"
-                  placeholder="Search"
-                  className="w-40 lg:w-60 pl-8 h-9 rounded-full bg-gray-100 border-none focus-visible:ring-red-500"
-                />
-                <Search className="absolute left-2 h-4 w-4 text-gray-500" />
-              </div>
-              <Button variant="ghost" size="icon" className="relative">
-                <Heart className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="relative">
-                <ShoppingBag className="h-5 w-5" />
-                <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                  0
-                </span>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative py-0">
@@ -427,9 +175,13 @@ const Home = () => {
       {/* Featured Products */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold">Featured Products</h2>
-            <Tabs defaultValue="all">
+          <Tabs
+            value={activeTab}
+            onValueChange={setActiveTab}
+            className="w-full"
+          >
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-2xl font-bold">Featured Products</h2>
               <TabsList>
                 <TabsTrigger value="all">All</TabsTrigger>
                 <TabsTrigger value="new">New Arrivals</TabsTrigger>
@@ -437,53 +189,99 @@ const Home = () => {
                 <TabsTrigger value="upper">Upper Wear</TabsTrigger>
                 <TabsTrigger value="lower">Lower Wear</TabsTrigger>
               </TabsList>
-            </Tabs>
-          </div>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {featuredProducts.map((product) => (
-              <Card
-                key={product.id}
-                className="overflow-hidden group border-none shadow-sm hover:shadow-md transition-shadow duration-300"
-              >
-                <div className="relative aspect-square overflow-hidden bg-gray-100">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                  />
-                  {product.isNew && (
-                    <Badge className="absolute top-2 left-2 bg-red-600 hover:bg-red-700">
-                      New
-                    </Badge>
-                  )}
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="absolute top-2 right-2 bg-white/80 hover:bg-white rounded-full"
-                  >
-                    <Heart className="h-4 w-4" />
-                  </Button>
-                </div>
-                <CardContent className="p-4">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-medium text-base mb-1">
-                        {product.name}
-                      </h3>
-                      <p className="text-sm text-gray-500 mb-1">
-                        {product.category}
-                      </p>
-                      <p className="text-sm text-gray-500">
-                        {product.colorways} Colors
-                      </p>
-                    </div>
-                    <p className="font-medium">${product.price}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+            <TabsContent value="all" className="mt-0">
+              <ProductGrid
+                products={featuredProducts.map((p) => ({
+                  id: p.id.toString(),
+                  name: p.name,
+                  price: p.price,
+                  category: p.category,
+                  image: p.image,
+                  colorways: p.colorways,
+                  isNew: p.isNew,
+                }))}
+                title=""
+                showFilters={false}
+              />
+            </TabsContent>
+
+            <TabsContent value="new" className="mt-0">
+              <ProductGrid
+                products={featuredProducts
+                  .filter((p) => p.isNew)
+                  .map((p) => ({
+                    id: p.id.toString(),
+                    name: p.name,
+                    price: p.price,
+                    category: p.category,
+                    image: p.image,
+                    colorways: p.colorways,
+                    isNew: p.isNew,
+                  }))}
+                title=""
+                showFilters={false}
+              />
+            </TabsContent>
+
+            <TabsContent value="shoes" className="mt-0">
+              <ProductGrid
+                products={featuredProducts
+                  .filter((p) => p.category.toLowerCase().includes("shoes"))
+                  .map((p) => ({
+                    id: p.id.toString(),
+                    name: p.name,
+                    price: p.price,
+                    category: p.category,
+                    image: p.image,
+                    colorways: p.colorways,
+                    isNew: p.isNew,
+                  }))}
+                title=""
+                showFilters={false}
+              />
+            </TabsContent>
+
+            <TabsContent value="upper" className="mt-0">
+              <ProductGrid
+                products={featuredProducts
+                  .filter((p) => p.category === "Upper Wear")
+                  .map((p) => ({
+                    id: p.id.toString(),
+                    name: p.name,
+                    price: p.price,
+                    category: p.category,
+                    image: p.image,
+                    colorways: p.colorways,
+                    isNew: p.isNew,
+                  }))}
+                title=""
+                showFilters={false}
+              />
+            </TabsContent>
+
+            <TabsContent value="lower" className="mt-0">
+              <ProductGrid
+                products={featuredProducts
+                  .filter(
+                    (p) =>
+                      p.category === "Lower Wear" || p.category === "Socks",
+                  )
+                  .map((p) => ({
+                    id: p.id.toString(),
+                    name: p.name,
+                    price: p.price,
+                    category: p.category,
+                    image: p.image,
+                    colorways: p.colorways,
+                    isNew: p.isNew,
+                  }))}
+                title=""
+                showFilters={false}
+              />
+            </TabsContent>
+          </Tabs>
 
           <div className="mt-12 text-center">
             <Button
