@@ -94,17 +94,20 @@ const Navbar = ({ cartItemCount = 0, favoriteItemCount = 0 }: NavbarProps) => {
                 className="relative group"
                 onMouseEnter={() => handleMouseEnter(category.name)}
               >
-                <button className="flex items-center text-sm font-medium text-gray-900 hover:text-red-600 transition-colors">
+                <Link
+                  to={`/${category.name.toLowerCase().replace(/ & | /g, "-")}`}
+                  className="flex items-center text-sm font-medium text-gray-900 hover:text-red-600 transition-colors"
+                >
                   {category.name}
                   <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
+                </Link>
 
                 {/* Dropdown Menu */}
                 {activeDropdown === category.name && (
                   <div
                     className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 z-10"
                     onMouseEnter={() => handleMouseEnter(category.name)}
-                    onMouseLeave={handleMouseLeave}
+                    onMouseLeave={() => setActiveDropdown(null)}
                   >
                     {category.subcategories.map((subcategory) => (
                       <Link
