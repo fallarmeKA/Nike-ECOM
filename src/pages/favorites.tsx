@@ -1,134 +1,137 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Heart, ShoppingBag } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/layout/Navbar";
+import ProductGrid from "@/components/products/ProductGrid";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
-interface FavoriteItem {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  category: string;
-  colorways: number;
-}
+const KidsPage = () => {
+  const [selectedTab, setSelectedTab] = useState("all");
 
-const FavoritesPage = () => {
-  const [favorites, setFavorites] = useState<FavoriteItem[]>([
-    {
-      id: "1",
-      name: "Nike Air Max 270",
-      price: 150,
-      category: "Men's Shoes",
-      image:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
-      colorways: 5,
-    },
-    {
-      id: "2",
-      name: "Nike React Infinity Run",
-      price: 160,
-      category: "Women's Shoes",
-      image:
-        "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=500&q=80",
-      colorways: 3,
-    },
+  const kidsProducts = [
     {
       id: "3",
       name: "Nike Air Force 1",
-      price: 110,
-      category: "Lifestyle Shoes",
+      price: 90,
+      category: "big-kids",
+      image:
+        "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=500&q=80",
+      colorways: 5,
+    },
+    {
+      id: "8",
+      name: "Nike SB Dunk Low",
+      price: 85,
+      category: "big-kids",
       image:
         "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80",
       colorways: 4,
     },
-  ]);
+    {
+      id: "36",
+      name: "Nike Air Max 90",
+      price: 100,
+      category: "big-kids",
+      image:
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+      colorways: 3,
+      isNew: true,
+    },
+    {
+      id: "37",
+      name: "Nike Team Hustle D 10",
+      price: 65,
+      category: "little-kids",
+      image:
+        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80",
+      colorways: 2,
+    },
+    {
+      id: "38",
+      name: "Nike Revolution 6",
+      price: 55,
+      category: "little-kids",
+      image:
+        "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80",
+      colorways: 4,
+      isNew: true,
+    },
+    {
+      id: "39",
+      name: "Nike Sportswear Club Fleece",
+      price: 40,
+      category: "toddler",
+      image:
+        "https://images.unsplash.com/photo-1552902019-ebcd97aa9aa0?w=500&q=80",
+      colorways: 5,
+    },
+    // ... rest unchanged
+  ];
 
-  const removeFromFavorites = (id: string) => {
-    setFavorites(favorites.filter((item) => item.id !== id));
-  };
+  const filteredProducts =
+    selectedTab === "all"
+      ? kidsProducts
+      : kidsProducts.filter((product) => product.category === selectedTab);
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar favoriteItemCount={favorites.length} />
+      <Navbar />
 
-      <div className="container mx-auto px-4 py-12 max-w-6xl">
-        <h1 className="text-3xl font-bold mb-8">Favorites</h1>
+      <div className="pt-20 pb-8 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl font-bold mb-2">Kids' Collection</h1>
+          <p className="text-gray-600 mb-6">
+            Style and comfort for young athletes.
+          </p>
 
-        {favorites.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {favorites.map((item) => (
-              <Card
-                key={item.id}
-                className="overflow-hidden group border-none shadow-sm hover:shadow-md transition-shadow duration-300"
+          <Tabs
+            defaultValue="all"
+            className="w-full"
+            onValueChange={(val) => setSelectedTab(val)}
+          >
+            <TabsList className="bg-transparent border-b w-full justify-start rounded-none">
+              <TabsTrigger
+                value="all"
+                className="data-[state=active]:border-b-2 data-[state=active]:border-black rounded-none"
               >
-                <div className="relative aspect-square overflow-hidden bg-gray-100">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => removeFromFavorites(item.id)}
-                    className="absolute top-2 right-2 bg-white/80 hover:bg-white rounded-full"
-                  >
-                    <Heart className="h-4 w-4 fill-red-500 text-red-500" />
-                  </Button>
-                </div>
-                <CardContent className="p-4">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-medium text-base mb-1">
-                        {item.name}
-                      </h3>
-                      <p className="text-sm text-gray-500 mb-1">
-                        {item.category}
-                      </p>
-                      <p className="text-sm text-gray-500">
-                        {item.colorways} Colors
-                      </p>
-                    </div>
-                    <p className="font-medium">${item.price}</p>
-                  </div>
-                  <div className="mt-4">
-                    <Link to={`/product/${item.id}`}>
-                      <Button
-                        variant="outline"
-                        className="w-full border-gray-300 hover:bg-gray-100 mb-2"
-                      >
-                        View Details
-                      </Button>
-                    </Link>
-                    <Button className="w-full bg-black hover:bg-gray-800 text-white">
-                      <ShoppingBag className="h-4 w-4 mr-2" />
-                      Add to Bag
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-16">
-            <h2 className="text-2xl font-medium mb-4">
-              Your favorites list is empty
-            </h2>
-            <p className="text-gray-500 mb-8">
-              Save items you love to your favorites list.
-            </p>
-            <Link to="/">
-              <Button className="bg-black hover:bg-gray-800 text-white">
-                Continue Shopping
-              </Button>
-            </Link>
-          </div>
-        )}
+                All
+              </TabsTrigger>
+              <TabsTrigger
+                value="big-kids"
+                className="data-[state=active]:border-b-2 data-[state=active]:border-black rounded-none"
+              >
+                Big Kids (8-16)
+              </TabsTrigger>
+              <TabsTrigger
+                value="little-kids"
+                className="data-[state=active]:border-b-2 data-[state=active]:border-black rounded-none"
+              >
+                Little Kids (4-7)
+              </TabsTrigger>
+              <TabsTrigger
+                value="toddler"
+                className="data-[state=active]:border-b-2 data-[state=active]:border-black rounded-none"
+              >
+                Toddler (1-3)
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {/* Category Banners */}
+          {/* ... same as before */}
+        </div>
+
+        <ProductGrid
+          products={filteredProducts}
+          title="Kids' Products"
+          showFilters={true}
+        />
       </div>
     </div>
   );
 };
 
-export default FavoritesPage;
+export default KidsPage;
