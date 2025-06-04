@@ -1,5 +1,6 @@
 import { Suspense } from "react";
-import { useRoutes, Routes, Route } from "react-router-dom";
+import { Routes, Route, useRoutes } from "react-router-dom";
+import CategoryPage from "./pages/category";
 import Home from "./components/home";
 import CartPage from "./pages/cart";
 import FavoritesPage from "./pages/favorites";
@@ -25,11 +26,17 @@ function App() {
           <Route path="/kids" element={<KidsPage />} />
           <Route path="/sale" element={<SalePage />} />
           <Route path="/product/:id" element={<ProductDetail />} />
-          {import.meta.env.VITE_TEMPO === "true" && (
-            <Route path="/tempobook/*" />
-          )}
+
+          {/* ✅ New dynamic subcategory route */}
+          <Route path="/category/:subcategory" element={<CategoryPage />} />
         </Routes>
-        {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
+
+        {/* Conditional Tempo Routes */}
+        {import.meta.env.VITE_TEMPO === "true" && (
+          <Routes>
+            {useRoutes(routes)}
+          </Routes>
+        )}
       </>
     </Suspense>
   );
