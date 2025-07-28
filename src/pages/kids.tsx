@@ -4,120 +4,123 @@ import ProductGrid from "@/components/products/ProductGrid";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const KidsPage = () => {
-  // Mock data for kids' products
-  const kidsProducts = [
+const MenPage = () => {
+  // Mock data for men's products
+  const mensProducts = [
     {
-      id: "3",
-      name: "Nike Air Force 1",
-      price: 90,
-      category: "kids",
-      image:
-        "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=500&q=80",
-      colorways: 5,
-    },
-    {
-      id: "8",
-      name: "Nike SB Dunk Low",
-      price: 85,
-      category: "kids",
-      image:
-        "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80",
-      colorways: 4,
-    },
-    {
-      id: "36",
-      name: "Nike Air Max 90",
-      price: 100,
-      category: "kids",
+      id: "1",
+      name: "Nike Air Max 270",
+      price: 150,
+      category: "men",
       image:
         "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
-      colorways: 3,
+      colorways: 4,
       isNew: true,
     },
     {
-      id: "37",
-      name: "Nike Team Hustle D 10",
-      price: 65,
-      category: "kids",
+      id: "4",
+      name: "Nike ZoomX Vaporfly",
+      price: 250,
+      category: "men",
       image:
         "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80",
       colorways: 2,
+      isNew: true,
     },
     {
-      id: "38",
-      name: "Nike Revolution 6",
-      price: 55,
-      category: "kids",
+      id: "6",
+      name: "Nike Air Zoom Pegasus",
+      price: 120,
+      category: "men",
       image:
         "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80",
+      colorways: 3,
+      isSale: true,
+    },
+    {
+      id: "10",
+      name: "Nike React Infinity Run",
+      price: 160,
+      category: "men",
+      image:
+        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80",
+      colorways: 3,
+    },
+    {
+      id: "12",
+      name: "Nike Air Jordan 1",
+      price: 180,
+      category: "men",
+      image:
+        "https://images.unsplash.com/photo-1556906781-9a412961c28c?w=500&q=80",
+      colorways: 8,
+      isNew: true,
+    },
+    {
+      id: "20",
+      name: "Nike Dri-FIT Jacket",
+      price: 85,
+      category: "men",
+      image:
+        "https://images.unsplash.com/photo-1617952385804-7b9a54f67c36?w=500&q=80",
       colorways: 4,
       isNew: true,
     },
     {
-      id: "39",
-      name: "Nike Sportswear Club Fleece",
-      price: 40,
-      category: "kids",
-      image:
-        "https://images.unsplash.com/photo-1552902019-ebcd97aa9aa0?w=500&q=80",
-      colorways: 5,
-    },
-    {
-      id: "40",
-      name: "Nike Dri-FIT T-Shirt",
-      price: 25,
-      category: "kids",
+      id: "21",
+      name: "Nike Sportswear T-Shirt",
+      price: 35,
+      category: "men",
       image:
         "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500&q=80",
       colorways: 6,
-      isNew: true,
     },
     {
-      id: "41",
-      name: "Nike Sportswear Tech Fleece",
-      price: 70,
-      category: "kids",
+      id: "22",
+      name: "Nike Tech Fleece Sweatshirt",
+      price: 110,
+      category: "men",
       image:
         "https://images.unsplash.com/photo-1556391922-01a8073e5d43?w=500&q=80",
       colorways: 3,
     },
     {
-      id: "42",
-      name: "Nike Sportswear Woven Shorts",
-      price: 30,
-      category: "kids",
+      id: "23",
+      name: "Nike Flex Stride Shorts",
+      price: 55,
+      category: "men",
       image:
         "https://images.unsplash.com/photo-1562183241-b937e95585b6?w=500&q=80",
       colorways: 4,
-    },
-    {
-      id: "43",
-      name: "Nike Everyday Cushioned Socks",
-      price: 15,
-      category: "kids",
-      image:
-        "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=500&q=80",
-      colorways: 3,
       isNew: true,
     },
     {
-      id: "44",
-      name: "Nike Brasilia Backpack",
-      price: 35,
-      category: "kids",
+      id: "24",
+      name: "Nike Sportswear Club Fleece",
+      price: 60,
+      category: "men",
       image:
-        "https://images.unsplash.com/photo-1622560480654-d96214fdc887?w=500&q=80",
-      colorways: 4,
+        "https://images.unsplash.com/photo-1552902019-ebcd97aa9aa0?w=500&q=80",
+      colorways: 6,
+      isNew: true,
     },
     {
-      id: "45",
-      name: "Nike Elemental Lunch Bag",
-      price: 20,
-      category: "kids",
+      id: "25",
+      name: "Nike Everyday Cushioned Socks",
+      price: 18,
+      category: "men",
       image:
-        "https://images.unsplash.com/photo-1581605405669-fcdf81165afa?w=500&q=80",
-      colorways: 2,
+        "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=500&q=80",
+      colorways: 5,
+    },
+    {
+      id: "26",
+      name: "Nike Air Force 1 '07",
+      price: 100,
+      category: "men",
+      image:
+        "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=500&q=80",
+      colorways: 7,
     },
   ];
 
@@ -127,9 +130,9 @@ const KidsPage = () => {
 
       <div className="pt-20 pb-8 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-2">Kids' Collection</h1>
+          <h1 className="text-4xl font-bold mb-2">Men's Collection</h1>
           <p className="text-gray-600 mb-6">
-            Style and comfort for young athletes.
+            Performance and style for every athlete.
           </p>
 
           <Tabs defaultValue="all" className="w-full">
@@ -141,22 +144,22 @@ const KidsPage = () => {
                 All
               </TabsTrigger>
               <TabsTrigger
-                value="big-kids"
+                value="shoes"
                 className="data-[state=active]:border-b-2 data-[state=active]:border-black rounded-none"
               >
-                Big Kids (8-16)
+                Shoes
               </TabsTrigger>
               <TabsTrigger
-                value="little-kids"
+                value="clothing"
                 className="data-[state=active]:border-b-2 data-[state=active]:border-black rounded-none"
               >
-                Little Kids (4-7)
+                Clothing
               </TabsTrigger>
               <TabsTrigger
-                value="toddler"
+                value="accessories"
                 className="data-[state=active]:border-b-2 data-[state=active]:border-black rounded-none"
               >
-                Toddler (1-3)
+                Accessories
               </TabsTrigger>
             </TabsList>
           </Tabs>
@@ -167,8 +170,8 @@ const KidsPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="relative aspect-square overflow-hidden rounded-lg">
             <img
-              src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=800&q=80"
-              alt="Kids' Shoes"
+              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80"
+              alt="Men's Shoes"
               className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/70 to-transparent">
@@ -180,8 +183,8 @@ const KidsPage = () => {
           </div>
           <div className="relative aspect-square overflow-hidden rounded-lg">
             <img
-              src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&q=80"
-              alt="Kids' Clothing"
+              src="https://images.unsplash.com/photo-1617952385804-7b9a54f67c36?w=800&q=80"
+              alt="Men's Clothing"
               className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/70 to-transparent">
@@ -193,8 +196,8 @@ const KidsPage = () => {
           </div>
           <div className="relative aspect-square overflow-hidden rounded-lg">
             <img
-              src="https://images.unsplash.com/photo-1622560480654-d96214fdc887?w=800&q=80"
-              alt="Kids' Accessories"
+              src="https://images.unsplash.com/photo-1562183241-b937e95585b6?w=800&q=80"
+              alt="Men's Accessories"
               className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/70 to-transparent">
@@ -209,8 +212,8 @@ const KidsPage = () => {
         </div>
 
         <ProductGrid
-          products={kidsProducts}
-          title="Kids' Products"
+          products={mensProducts}
+          title="Men's Products"
           showFilters={true}
         />
       </div>
@@ -218,4 +221,4 @@ const KidsPage = () => {
   );
 };
 
-export default KidsPage;
+export default MenPage;

@@ -78,10 +78,10 @@ const Navbar = ({ cartItemCount = 0, favoriteItemCount = 0 }: NavbarProps) => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center">
-              <img
-                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&q=80"
-                alt="Nike"
-                className="h-8 w-auto"
+              <img 
+                src="/src\images\NLogo.png" 
+                alt="Nike" 
+                className="h-8 w-auto" 
               />
             </Link>
           </div>
